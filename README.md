@@ -5,6 +5,6 @@
 
 [Pasos que segui.docx](https://github.com/user-attachments/files/19781543/Pasos.que.segui.docx)//
 
+[funcionalidades actuales de la api.pdf](https://github.com/user-attachments/files/19782168/funcionalidades.actuales.de.la.api.pdf)//
 
-
-[prueba de api en postman.pdf](https://github.com/user-attachments/files/19781947/prueba.de.api.en.postman.pdf)//
+[prueba de api en postman.pdf](https://github.com/user-attachments/files/19782169/prueba.de.api.en.postman.pdf)//
