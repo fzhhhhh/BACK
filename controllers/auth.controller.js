@@ -28,23 +28,26 @@ exports.loginUser = async (req, res) => {
 
   try {
     const [usuarios] = await pool.query('SELECT * FROM usuarios WHERE correo = ?', [correo]);
+    console.log('Usuarios encontrados:', usuarios);
+  
     const usuario = usuarios[0];
-
     if (!usuario) {
       return res.status(400).json({ mensaje: 'Correo no encontrado' });
     }
-
+  
     const match = await bcrypt.compare(contraseña, usuario.contraseña);
+    console.log('Resultado bcrypt.compare:', match);
     if (!match) {
       return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
     }
-
+  
     const token = jwt.sign({ id: usuario.id, correo: usuario.correo }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
-
+  
     res.json({ token });
   } catch (error) {
+    console.error("Error al iniciar sesión:", error); // Esto mostrará el error real
     res.status(500).json({ error: 'Error al iniciar sesión' });
   }
 };

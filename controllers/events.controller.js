@@ -26,3 +26,23 @@ exports.createEvent = async (req, res) => {
     res.status(500).json({ error: 'Error al crear evento' });
   }
 };
+
+
+// Eliminar un evento...
+exports.deleteEvent = async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const [resultado] = await pool.query('DELETE FROM eventos WHERE id = ?', [id]);
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ mensaje: 'Evento no encontrado' });
+    }
+
+    res.json({ mensaje: 'Evento eliminado correctamente' });
+  } catch (error) {
+    console.error('Error al eliminar evento:', error);
+    res.status(500).json({ error: 'Error al eliminar evento' });
+  }
+};
+
